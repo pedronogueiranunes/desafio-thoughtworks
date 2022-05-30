@@ -1,0 +1,16 @@
+{
+  "name": "desafio-hoteis-thoughtworks",
+  "version": "1.0.0",
+  "description": "teste para entrevista de frontend da thoughtworks",
+  "main": "index.js",
+  "scripts": {
+    "test": "teste"
+  },
+  "keywords": [
+    "hoteis",
+    "js",
+    "thoughtworks"
+  ],
+  "author": "Pedro J. Nogueira N.",
+  "license": "MIT"
+}

@@ -3,7 +3,7 @@
 
 //let testparams = "Regular: 16Mar2020(mon), 17Mar2020(tues), 18Mar2020(wed)";
 //let testparams = "Regular: 20Mar2020(fri), 21Mar2020(sat), 22Mar2020(sun)";
-let testparams = "Fidelidade: 25Mar2020(wed), 26Mar2020(thur), 27Mar2020(fri), 28Mar2020(sat), 29Mar2020(sun), 30Mar2020(mon)";
+let testparams = "Fidelidade: 25Mar2020(wed), 26Mar2020(thur), 27Mar2020(fri), 28Mar2020(sat)";
 
 // 2 - DEFININDO A FUNÇÃO 
 
@@ -26,8 +26,8 @@ let  hotelMaisBarato = (params) => {
         valorFidelidade: {semana: 100, fimDeSemana: 40}
         }];
         
-        console.log("-------------------------------------------------------------------------------------");
-        console.log("HOTEIS NO INICIO: "+ hoteis);
+       // console.log("-------------------------------------------------------------------------------------");
+       // console.log("HOTEIS NO INICIO: "+ hoteis);
     
 // 3- FUNÇÕES AUXILIARES DE VALIDAÇÃO
 
@@ -46,15 +46,15 @@ let  hotelMaisBarato = (params) => {
 // 4 - QUEBRA DA STRING RECEBIDA EM VARIAVEIS DIFERENTES - ATIBUI TIPO DE CLIENTE E TIPOCLIENTE E DATAS A DATASARRAY
 
     let tipoCliente = params.split(":", 1);    
-    console.log("-------------------------------------------------------------------------------------");
-    console.log(" ");
-    console.log("TIPOCLIENTE: "+ tipoCliente);
+   // console.log("-------------------------------------------------------------------------------------");
+  //  console.log(" ");
+ //   console.log("TIPOCLIENTE: "+ tipoCliente);
     
     let datesArray = params.split(":").join(", ").split(", ");
     datesArray.shift();
-    console.log(" ");
-    console.log("ARRAY DE DATAS: "+ datesArray);
-    console.log(" ");
+  //  console.log(" ");
+  //  console.log("ARRAY DE DATAS: "+ datesArray);
+  //  console.log(" ");
     
     
     
@@ -76,21 +76,19 @@ let  hotelMaisBarato = (params) => {
     }).flat();
     
     // DELETE
-    console.log("-------------------------------------------------------------------------------------");
-    console.log(" ");
-    console.log("ARRAY DE DIARIAS"+ diariasArray)
-    diariasArray.forEach((diaria) => {
-        console.log(diaria);
-    })
+   // console.log("-------------------------------------------------------------------------------------");
+  //  console.log(" ");
+  //  console.log("ARRAY DE DIARIAS"+ diariasArray)
+ 
     
 // 6 - PASSA PELO ARRAY DE DIARIAS GERANDO 3 NOVOS ARRAYS COM AS SOMAS DOS VALORES DE CADA HOTEL
     
-    const parqueSum = diariasArray.filter((diaria) => {return diaria.name == "Parque das flores"}).reduce((total, n)=>{console.log(total); return total += n.valorDiaria;},0);
-    const jardimSum = diariasArray.filter((diaria) => {return diaria.name == "Jardim Botânico"}).reduce((total, n)=>{console.log(total); return total += n.valorDiaria;},0);
-    const marSum = diariasArray.filter((diaria) => {return diaria.name == "Mar Atlântico"}).reduce((total, n)=>{console.log(total); return total += n.valorDiaria;},0);  
+    const parqueSum = diariasArray.filter((diaria) => {return diaria.name == "Parque das flores"}).reduce((total, n)=>{return total += n.valorDiaria;},0);
+    const jardimSum = diariasArray.filter((diaria) => {return diaria.name == "Jardim Botânico"}).reduce((total, n)=>{return total += n.valorDiaria;},0);
+    const marSum = diariasArray.filter((diaria) => {return diaria.name == "Mar Atlântico"}).reduce((total, n)=>{return total += n.valorDiaria;},0);  
     
     
-    console.log("-------------------------------------------------------------------------------------");
+ //   console.log("-------------------------------------------------------------------------------------");
     hoteis.forEach((hotel)=>{
         if (hotel.name == "Parque das flores"){
             hotel.totalDiarias = parqueSum;
@@ -106,32 +104,12 @@ let  hotelMaisBarato = (params) => {
 // 7  ADICIONA O VALOR TOTAL DAS DIARAIS 
    
 // DELETE
-   console.log(hoteis);
+ 
 
    const HotelMaisBarato = hoteis.reduce((min, item, i, array) => 
    {
-       console.log(" ");
-       console.log("- REDUCE CLASSIFICACAO "+ item.classificacao);
-       console.log("- REDUCE NAME "+ item.name);
-       console.log("- REDUCE TOTAL DIARIAS "+ item.totalDiarias);
-       console.log("- REDUCE INDEX "+ i);
-       console.log("- REDUCE INDEX - 1 "+ item.i);
-       console.log(" ");
-       console.log("- ARRAY "+ array[i].name);
-       console.log("- ARRAY - 1"+ array[i - 1]);
+    
 
-    let resultado = {
-
-        total: (item.totalDiarias < min && item.classificacao == 5 ? item.totalDiarias : min ), 
-        name: item.name, 
-        classificacao: item.classificacao
-
-    }
-
-    /*
-       return (item.totalDiarias < min && item.classificacao == 5 ? 
-        {total: item.totalDiarias, name: item.name, classificacao: item.classificacao} : (item.totalDiarias < min && item.classificacao == 4 ? {total: item.totalDiarias, name: item.name, classificacao: item.classificacao} : (item.totalDiarias < min && item.classificacao == 3 ? {total: item.totalDiarias, name: item.name, classificacao: item.classificacao} : min )));
-     */
        return (item.totalDiarias < min && item.classificacao == 5 ? {total: item.totalDiarias, name: item.name, classificacao: item.classificacao} : min );
 
     }, hoteis[0].totalDiarias);

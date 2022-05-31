@@ -106,21 +106,21 @@ let  hotelMaisBarato = (params) => {
 // DELETE
  
 
-   const HotelMaisBarato = hoteis.reduce((min, item, index, array) => 
-   {
-        if(item.totalDiarias < min){
-            return {total: item.totalDiarias, name: item.name, classificacao: item.classificacao};
+    const HotelMaisBarato = hoteis.reduce((min, item, index, array) => 
+    {
+        if(item.totalDiarias < min.totalDiarias){
+            return {totalDiarias: item.totalDiarias, name: item.name, classificacao: item.classificacao};
         }else if(item.totalDiarias == min.totalDiarias && item.classificacao >= min.classificacao){
-            return 
+            return {totalDiarias: item.totalDiarias, name: item.name, classificacao: item.classificacao}
         } else {
             return min;
         }
-    }, hoteis[0].totalDiarias);
+    }, hoteis[0]);
 
     //console.log("NOME DO HOTEL MAIS BARATO: "+nomeHotelMaisBarato.name);
     console.log(" ");
     console.log("NOME FINAL : "+HotelMaisBarato.name);
-    console.log("TOTAL FINAL : "+HotelMaisBarato.total);
+    console.log("TOTAL FINAL : "+HotelMaisBarato.totalDiarias);
     console.log("CLASSIFICACAO FINAL : "+HotelMaisBarato.classificacao);
     console.log(" ");
 
